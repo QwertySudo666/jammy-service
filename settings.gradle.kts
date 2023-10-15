@@ -10,3 +10,6 @@ plugins {
 }
 
 rootProject.name = "jammy-service"
+include("jammy-application")
+include("jammy-core")
+include("jammy-persistence")

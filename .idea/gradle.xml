@@ -7,6 +7,9 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/jammy-application" />
+            <option value="$PROJECT_DIR$/jammy-core" />
+            <option value="$PROJECT_DIR$/jammy-persistence" />
           </set>
         </option>
       </GradleProjectSettings>
