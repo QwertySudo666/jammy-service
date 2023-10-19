@@ -1,8 +1,9 @@
 package com.jammy
 
 import com.jammy.domain.User
+import com.jammy.dtos.UserDTO
 
-fun UserEntity.toBusinessModel(): User {
+fun UserDTO.toBusinessModel(): User {
     return User(
         id = this.id,
         name = this.name,
@@ -13,8 +14,8 @@ fun UserEntity.toBusinessModel(): User {
     )
 }
 
-fun User.toEntity(): UserEntity {
-    return UserEntity(
+fun User.toDTO(): UserDTO {
+    return UserDTO(
         id = this.id,
         name = this.name,
         instruments = this.instruments,

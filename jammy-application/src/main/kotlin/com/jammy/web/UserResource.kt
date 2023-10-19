@@ -1,7 +1,8 @@
 package com.jammy.web
 
 import com.jammy.business.facade.UserFacade
-import com.jammy.domain.User
+import com.jammy.dtos.UserDTO
+import com.jammy.toDTO
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("api/users")
 class UserResource(private val userFacade: UserFacade) {
     @GetMapping
-    fun fetchAll(): List<User>{
-        return userFacade.fetchAll()
+    fun fetchAll(): List<UserDTO> {
+        return userFacade.fetchAll().map { it.toDTO() }
     }
 }
