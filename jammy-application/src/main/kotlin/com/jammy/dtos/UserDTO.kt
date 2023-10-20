@@ -7,9 +7,7 @@ import java.util.*
 
 data class UserDTO(
     val id: UUID = UUID.randomUUID(),
-    val name: String,
-    val instruments: List<Instrument>,
-    val musicStyles: List<MusicStyle>,
-    val experience: Experience,
-    val location: String,
+    val email: String,
+    val username: String,
+    val password: String,
 )

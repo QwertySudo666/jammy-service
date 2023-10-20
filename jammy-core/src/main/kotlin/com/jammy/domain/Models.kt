@@ -4,11 +4,13 @@ import java.util.UUID
 
 data class User(
     val id: UUID,
-    val name: String,
-    val instruments: List<Instrument>,
-    val musicStyles: List<MusicStyle>,
-    val experience: Experience,
-    val location: String,
+    val email: String,
+    val username: String,
+    val password: String,
+//    val instruments: List<Instrument>,
+//    val musicStyles: List<MusicStyle>,
+//    val experience: Experience,
+//    val location: String,
 )
 
 enum class Instrument {
