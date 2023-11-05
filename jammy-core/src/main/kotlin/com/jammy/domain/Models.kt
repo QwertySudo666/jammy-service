@@ -3,14 +3,19 @@ package com.jammy.domain
 import java.util.UUID
 
 data class User(
-    val id: UUID,
+    val id: UUID = UUID.randomUUID(),
     val email: String,
     val username: String,
     val password: String,
-//    val instruments: List<Instrument>,
-//    val musicStyles: List<MusicStyle>,
-//    val experience: Experience,
-//    val location: String,
+)
+
+data class Profile(
+    val id: UUID = UUID.randomUUID(),
+    val userId: UUID,
+    val instruments: List<Instrument>,
+    val musicStyles: List<MusicStyle>,
+    val experience: Experience,
+    val location: String,
 )
 
 enum class Instrument {

@@ -23,20 +23,14 @@ data class UserEntity(
 //    val location: String,
 )
 
-fun UserEntity.toBusinessModel(): User {
-    return User(
-        id = this.id,
-        email = this.email,
-        username = this.username,
-        password = this.password,
-    )
-}
-
-fun User.toEntity(): UserEntity {
-    return UserEntity(
-        id = this.id,
-        email = this.email,
-        username = this.username,
-        password = this.password
-    )
-}
+@Entity
+@Table(name = "profiles")
+data class ProfileEntity(
+    @Id
+    val id: UUID,
+    val userId: UUID,
+    val instruments: List<Instrument>,
+    val musicStyles: List<MusicStyle>,
+    val experience: Experience,
+    val location: String,
+)

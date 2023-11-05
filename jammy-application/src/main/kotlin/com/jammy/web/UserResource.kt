@@ -1,9 +1,7 @@
 package com.jammy.web
 
 import com.jammy.business.facade.UserFacade
-import com.jammy.dtos.UserDTO
-import com.jammy.toBusinessModel
-import com.jammy.toDTO
+import com.jammy.domain.User
 import org.springframework.web.bind.annotation.*
 import java.util.*
 
@@ -16,23 +14,23 @@ class UserResource(private val userFacade: UserFacade) {
     }
 
     @GetMapping
-    fun fetchAll(): List<UserDTO> {
-        return userFacade.fetchAll().map { it.toDTO() }
+    fun fetchAll(): List<User> {
+        return userFacade.fetchAll()
     }
 
     @PostMapping
-    fun createUser(@RequestBody userDTO: UserDTO): UserDTO {
-        return userFacade.createUser(userDTO.toBusinessModel()).toDTO()
+    fun createUser(@RequestBody user: User): User {
+        return userFacade.createUser(user)
     }
 
     @GetMapping("{id}")
-    fun getUserById(@PathVariable id: UUID): UserDTO {
-        return userFacade.fetchUserById(id)!!.toDTO()
+    fun getUserById(@PathVariable id: UUID): User {
+        return userFacade.fetchUserById(id)!!
     }
 
     @PutMapping("{id}")
-    fun updateUser(@PathVariable id: UUID, @RequestBody userDTO: UserDTO): UserDTO? {
-        return userFacade.updateUser(id, userDTO.toBusinessModel())?.toDTO()
+    fun updateUser(@PathVariable id: UUID, @RequestBody user: User): User {
+        return userFacade.updateUser(id, user)!!
     }
 
     @DeleteMapping("{id}")
