@@ -1,6 +1,6 @@
 package com.jammy.domain
 
-import java.util.UUID
+import java.util.*
 
 data class User(
     val id: UUID = UUID.randomUUID(),
@@ -12,24 +12,21 @@ data class User(
 data class Profile(
     val id: UUID = UUID.randomUUID(),
     val userId: UUID,
-    val instruments: List<Instrument>,
-    val musicStyles: List<MusicStyle>,
+    val instrumentIds: List<UUID>,
+    val musicStyleIds: List<UUID>,
     val experience: Experience,
     val location: String,
 )
 
-enum class Instrument {
-    BASS,
-    DRUMS,
-    ELECTRIC_GUITAR,
-    VOCAL
-}
+data class Instrument(
+    val id: UUID = UUID.randomUUID(),
+    val name: String,
+)
 
-enum class MusicStyle {
-    METAL,
-    ROCK,
-    ALTERNATIVE
-}
+data class MusicStyle(
+    val id: UUID = UUID.randomUUID(),
+    val name: String,
+)
 
 enum class Experience {
     BEGINNER,

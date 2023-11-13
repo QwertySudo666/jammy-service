@@ -1,7 +1,7 @@
 package com.jammy.business.facade
 
 import com.jammy.business.adapter.ProfileRepositoryAdapter
-import com.jammy.domain.Profile
+import com.jammy.domain.*
 import java.util.*
 
 class ProfileFacade(private val profileRepositoryAdapter: ProfileRepositoryAdapter) {
@@ -23,5 +23,19 @@ class ProfileFacade(private val profileRepositoryAdapter: ProfileRepositoryAdapt
 
     fun deleteProfile(id: UUID): Boolean {
         return profileRepositoryAdapter.deleteProfile(id)
+    }
+
+    fun initProfiles(users: List<User>): List<Profile> {
+        val profiles = users.map {
+            Profile(
+                userId = it.id,
+                experience = Experience.GOOD,
+                instrumentIds = emptyList(),
+                musicStyleIds = emptyList(),
+                location = "Lviv"
+            )
+        }
+
+        return profileRepositoryAdapter.initProfiles(profiles)
     }
 }

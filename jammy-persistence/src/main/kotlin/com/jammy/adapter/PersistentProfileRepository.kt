@@ -2,6 +2,8 @@ package com.jammy.adapter
 
 import com.jammy.business.adapter.ProfileRepositoryAdapter
 import com.jammy.domain.Profile
+import com.jammy.repository.InstrumentRepository
+import com.jammy.repository.MusicStyleRepository
 import com.jammy.repository.ProfileRepository
 import com.jammy.toBusinessModel
 import com.jammy.toEntity
@@ -11,6 +13,8 @@ import java.util.*
 @Service
 class PersistentProfileRepository(
     private val profileRepository: ProfileRepository,
+    private val instrumentRepository: InstrumentRepository,
+    private val musicStyleRepository: MusicStyleRepository,
 ) : ProfileRepositoryAdapter {
     override fun fetchAll(): List<Profile> {
         return profileRepository.findAll().map { it.toBusinessModel() }
@@ -25,6 +29,7 @@ class PersistentProfileRepository(
     }
 
     override fun updateProfile(id: UUID, updatedProfile: Profile): Profile {
+        //triuble with instr and msicstyles
         return profileRepository.save(updatedProfile.toEntity()).toBusinessModel()
     }
 
@@ -34,5 +39,9 @@ class PersistentProfileRepository(
             return true
         }
         return false
+    }
+
+    override fun initProfiles(profiles: List<Profile>): List<Profile> {
+        return profileRepository.saveAll(profiles.map { it.toEntity() }).map { it.toBusinessModel() }
     }
 }

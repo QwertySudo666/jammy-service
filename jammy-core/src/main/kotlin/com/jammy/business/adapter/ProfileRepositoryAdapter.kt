@@ -10,4 +10,5 @@ interface ProfileRepositoryAdapter {
     fun fetchProfileById(id: UUID): Profile
     fun updateProfile(id: UUID, updatedProfile: Profile): Profile
     fun deleteProfile(id: UUID): Boolean
+    fun initProfiles(profiles: List<Profile>): List<Profile>
 }
