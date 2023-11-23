@@ -26,6 +26,7 @@ class ProfileFacadeTest {
         experience = Experience.GOOD,
         location = "Tokyo",
     )
+    private val profiles = listOf(profile)
 
     private val profileRepositoryAdapter: ProfileRepositoryAdapter = Mockito.mock(ProfileRepositoryAdapter::class.java)
     private val profileFacade = ProfileFacade(profileRepositoryAdapter)
@@ -63,6 +64,13 @@ class ProfileFacadeTest {
         Mockito.`when`(profileRepositoryAdapter.deleteProfile(profile.id)).thenReturn(false)
         val deleted = profileFacade.deleteProfile(profile.id)
         assertFalse(deleted)
+    }
+
+    @Test
+    fun fetchAll() {
+        Mockito.`when`(profileRepositoryAdapter.fetchAll()).thenReturn(profiles)
+        val fetchedProfiles = profileFacade.fetchAll()
+        assertEquals(profiles, fetchedProfiles)
     }
 
     @Test
