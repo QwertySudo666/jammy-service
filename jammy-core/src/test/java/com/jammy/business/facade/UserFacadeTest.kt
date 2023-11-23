@@ -42,11 +42,19 @@ class UserFacadeTest {
     }
 
     @Test
-    fun updateUser() {
+    fun updateUser_ifUserExists_User() {
         Mockito.`when`(userRepository.updateUser(user.id, user)).thenReturn(user)
         Mockito.`when`(userRepository.fetchUserById(user.id)).thenReturn(user)
         val fetchedUser = userFacade.updateUser(user.id, user)
         assertEquals(user, fetchedUser)
+    }
+
+    @Test
+    fun updateUser_ifUserDoesntExists_Null() {
+        Mockito.`when`(userRepository.updateUser(user.id, user)).thenReturn(user)
+        Mockito.`when`(userRepository.fetchUserById(user.id)).thenReturn(null)
+        val fetchedUser = userFacade.updateUser(user.id, user)
+        assertNull(fetchedUser)
     }
 
     @Test
