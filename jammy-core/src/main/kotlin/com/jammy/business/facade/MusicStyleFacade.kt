@@ -4,7 +4,7 @@ import com.jammy.business.adapter.MusicStyleRepositoryAdapter
 import com.jammy.domain.MusicStyle
 
 class MusicStyleFacade(private val musicStyleRepositoryAdapter: MusicStyleRepositoryAdapter) {
-    fun fetchAll(): List<MusicStyle>{
+    fun fetchAllMusicStyles(): List<MusicStyle> {
         return musicStyleRepositoryAdapter.fetchAll()
     }
 
