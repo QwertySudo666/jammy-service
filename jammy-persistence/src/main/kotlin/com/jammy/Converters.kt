@@ -42,14 +42,26 @@ fun Profile.toEntity(): ProfileEntity {
     )
 }
 
-//fun InstrumentEntity.toBusinessModel(): Instrument {
-//    return Instrument(
-//        this.id, this.name
-//    )
-//}
-//
-//fun Instrument.toEntity(): InstrumentEntity {
-//    return InstrumentEntity(
-//        this.id, this.name
-//    )
-//}
+fun InstrumentEntity.toBusinessModel(): Instrument {
+    return Instrument(
+        this.id, this.name
+    )
+}
+
+fun Instrument.toEntity(): InstrumentEntity {
+    return InstrumentEntity(
+        this.id, this.name
+    )
+}
+
+fun MusicStyleEntity.toBusinessModel(): MusicStyle {
+    return MusicStyle(
+        this.id, this.name
+    )
+}
+
+fun MusicStyle.toEntity(): MusicStyleEntity {
+    return MusicStyleEntity(
+        this.id, this.name
+    )
+}
